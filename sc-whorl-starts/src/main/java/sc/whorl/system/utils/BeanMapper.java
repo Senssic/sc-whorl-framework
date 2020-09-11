@@ -1,9 +1,8 @@
 package sc.whorl.system.utils;
 
-import com.google.common.collect.Lists;
-
 import org.dozer.DozerBeanMapper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class BeanMapper {
 
 
     public static <T> List<T> mapList(Collection sourceList, Class<T> destinationClass) {
-        List<T> destinationList = Lists.newArrayList();
+        List<T> destinationList =new ArrayList<>();
         for (Object sourceObject : sourceList) {
             T destinationObject = dozer.map(sourceObject, destinationClass);
             destinationList.add(destinationObject);

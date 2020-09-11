@@ -33,15 +33,12 @@
         <pagehelper.spring.boot.starter>1.2.7</pagehelper.spring.boot.starter>
         <mysql.version>8.0.17</mysql.version>
         <gson.version>2.8.6</gson.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <swagger-bootstrap-ui.version>1.8.8</swagger-bootstrap-ui.version>
         <!--3tdr end-->
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>sc-senssic</groupId>
-                <artifactId>sc-whorl-starts</artifactId>
-                <version>${sc-whorl.version}</version>
-            </dependency>
             <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
@@ -52,21 +49,10 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.spring.boot.starter}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.spring4all</groupId>
-                <artifactId>swagger-spring-boot-starter</artifactId>
-                <version>${swagger-spring-boot.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -87,6 +73,16 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.gson</groupId>

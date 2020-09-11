@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 sc.whorl.system.config.CommonWebAutoConfiguration,\
 sc.whorl.system.config.GlobalExceptionAutoConfiguration,\
-sc.whorl.system.config.RequestLogConfiguration
+sc.whorl.system.config.RequestLogConfiguration,\
+sc.whorl.system.config.SwaggerConfiguration

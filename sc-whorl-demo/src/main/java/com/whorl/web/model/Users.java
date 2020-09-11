@@ -1,5 +1,5 @@
 
-package sc.whorl.web.model;
+package com.whorl.web.model;
 
 import org.apache.ibatis.type.Alias;
 
@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Users implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long userId;
 
     @Column(name = "accountName")

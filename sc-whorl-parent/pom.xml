@@ -41,13 +41,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.hswebframework.web</groupId>
-                <artifactId>hsweb-framework</artifactId>
-                <version>${hsweb.framework.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

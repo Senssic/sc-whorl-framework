@@ -2,6 +2,8 @@ package sc.whorl.system.utils;
 
 
 public interface StringPool {
+    String TOKEN="token";
+    String HEADER="header";
     String AMPERSAND = "&";
     String AND = "and";
     String AT = "@";

@@ -1,6 +1,9 @@
 server:
   port: 8080
+
 spring:
+  profiles:
+    active: dev
 #  jpa:
 #    show-sql: true
 #    hibernate:
@@ -21,9 +24,9 @@ spring:
 #      enabled: true
 
   datasource:
-    url: jdbc:mysql://db4free.net:3306/test_senssic?useUnicode=yes&characterEncoding=UTF-8
-    username: senssic
-    password: scsenssic
+    url: jdbc:mysql://10.19.151.143:3306/cityoss?useUnicode=yes&characterEncoding=UTF-8
+    username: bocom
+    password: bocommysql
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
   mapper-locations:
