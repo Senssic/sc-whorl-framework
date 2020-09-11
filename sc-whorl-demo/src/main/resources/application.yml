@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    url: jdbc:h2:mem:test_senssic
+#    username: senssic
+#    password: scsenssic
+#    driver-class-name: org.h2.Driver
+#    schema: classpath:db/schema.sql
+#    data: classpath:db/data.sql
+#    platform: h2
+#  h2:
+#    console:
+#      settings:
+#        web-allow-others: true
+#      path: /h2
+#      enabled: true
+
+  datasource:
+    url: jdbc:mysql://db4free.net:3306/test_senssic?useUnicode=yes&characterEncoding=UTF-8
+    username: senssic
+    password: scsenssic
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations:
+    - classpath*:/mapper/*-mapper.xml
+  type-aliases-package: sc.whorl.web.model
+
+
+mapper:
+  mappers: sc.whorl.system.common.ScMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  pageSizeZero: true
+  rowBoundsWithCount: true
+  offsetAsPageNum: true
