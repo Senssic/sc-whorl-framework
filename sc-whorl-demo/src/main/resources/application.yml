@@ -35,7 +35,7 @@ mybatis:
 
 
 mapper:
-  mappers: sc.whorl.system.common.ScMapper
+  mappers: com.sc.whorl.system.common.ScMapper
   not-empty: false
   identity: MYSQL
 

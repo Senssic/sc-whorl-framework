@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import sc.whorl.system.common.ScMapper;
+import com.sc.whorl.system.common.ScMapper;
 
 
 /**

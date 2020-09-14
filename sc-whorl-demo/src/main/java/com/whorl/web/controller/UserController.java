@@ -1,6 +1,7 @@
 package com.whorl.web.controller;
 
 
+import com.sc.whorl.system.common.RT;
 import com.whorl.web.dao.UserMapper;
 import com.whorl.web.model.Users;
 
@@ -14,7 +15,6 @@ import java.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import sc.whorl.system.common.RT;
 
 @Slf4j
 @RestController
