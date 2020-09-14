@@ -47,3 +47,6 @@ pagehelper:
   pageSizeZero: true
   rowBoundsWithCount: true
   offsetAsPageNum: true
+whorl:
+  app:
+    swagger-base-package: com.whorl

@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "sc.app", ignoreInvalidFields = true)
+@ConfigurationProperties(prefix = "whorl.app", ignoreInvalidFields = true)
 public class ScAppProperties {
     /**
      * 应用版本
@@ -24,6 +24,11 @@ public class ScAppProperties {
      * 是否开始防xss攻击
      */
     private Boolean xssFilterEnable=true;
+
+    /**
+     * swagger扫描的包,默认com.sc
+     */
+    private String swaggerBasePackage = "com.sc";
 
 
 }

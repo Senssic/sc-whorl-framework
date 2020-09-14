@@ -1,8 +1,10 @@
 package com.sc.whorl.system.config;
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
+import com.sc.whorl.system.properties.ScAppProperties;
 import com.sc.whorl.system.utils.StringPool;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwaggerBootstrapUI
 @Profile({"dev", "test"})
 public class SwaggerConfiguration {
+    @Autowired
+    private ScAppProperties scAppProperties;
+
     @Bean(value = "defaultSwaggerApi")
     public Docket defaultSwaggerApi() {
         ParameterBuilder tokenPar = new ParameterBuilder();
@@ -36,7 +41,7 @@ public class SwaggerConfiguration {
         pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.sc"))
+                .apis(RequestHandlerSelectors.basePackage(scAppProperties.getSwaggerBasePackage()))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(pars);
     }
