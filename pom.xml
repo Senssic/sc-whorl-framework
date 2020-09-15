@@ -6,12 +6,13 @@
     <groupId>com.github.senssic</groupId>
     <artifactId>sc-whorl-framework</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <modules>
         <module>sc-whorl-dependencies</module>
         <module>sc-whorl-parent</module>
         <module>sc-whorl-starts</module>
         <module>sc-whorl-demo</module>
+        <module>sc-whorl-authorization</module>
     </modules>
 
     <properties>
@@ -29,7 +30,7 @@
             <dependency>
                 <groupId>com.github.senssic</groupId>
                 <artifactId>sc-whorl-dependencies</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

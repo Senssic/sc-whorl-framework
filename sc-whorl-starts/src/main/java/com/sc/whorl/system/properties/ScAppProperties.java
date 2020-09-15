@@ -30,5 +30,9 @@ public class ScAppProperties {
      */
     private String swaggerBasePackage = "com.sc";
 
+    /**
+     * 日志等级
+     */
+    private String logLevel="INFO";
 
 }

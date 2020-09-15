@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.github.senssic</groupId>
         <artifactId>sc-whorl-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sc-whorl-starts</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <properties>

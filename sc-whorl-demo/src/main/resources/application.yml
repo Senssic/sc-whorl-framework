@@ -50,3 +50,4 @@ pagehelper:
 whorl:
   app:
     swagger-base-package: com.whorl
+    log-level: debug
