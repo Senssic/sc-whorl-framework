@@ -2,7 +2,7 @@ package com.sc.whorl.system.utils;
 
 
 public interface StringPool {
-    String TOKEN="token";
+    String AUTH="auth";
     String HEADER="header";
     String AMPERSAND = "&";
     String AND = "and";

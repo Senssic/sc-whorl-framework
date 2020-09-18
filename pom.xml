@@ -12,7 +12,6 @@
         <module>sc-whorl-parent</module>
         <module>sc-whorl-starts</module>
         <module>sc-whorl-demo</module>
-        <module>sc-whorl-authorization</module>
     </modules>
 
     <properties>

@@ -37,7 +37,7 @@ public class SwaggerConfiguration {
     public Docket defaultSwaggerApi() {
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();
-        tokenPar.name(StringPool.TOKEN).description("携带令牌").modelRef(new ModelRef("string")).parameterType(StringPool.HEADER).required(false).build();
+        tokenPar.name(StringPool.AUTH).description("携带令牌").modelRef(new ModelRef("string")).parameterType(StringPool.HEADER).required(false).build();
         pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).select()

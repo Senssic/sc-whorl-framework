@@ -135,4 +135,22 @@ public class ScUtils {
         }
         return (Class<T>) type;
     }
+
+    /**
+     * 获取登陆客户端身份标识
+     *
+     * @return
+     */
+    public static String getUserIdentityInfo() {
+        HttpServletRequest request = ScUtils.getRequest();
+        StringBuilder sb = new StringBuilder();
+        sb.append(ScUtils.getIP(request).replaceAll("\\s*", ""));
+        //sb.append(request.getRemoteHost().replaceAll("\\s*", ""));
+        sb.append(request.getProtocol().replaceAll("\\s*", ""));
+        String userAgent = request.getHeader("user-Agent");
+        if (null != userAgent) {
+            sb.append(userAgent.replaceAll("\\s*", ""));
+        }
+        return sb.toString();
+    }
 }

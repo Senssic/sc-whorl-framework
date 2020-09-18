@@ -4,6 +4,11 @@ server:
 spring:
   profiles:
     active: dev
+  redis:
+    database: 0
+    host: 10.19.146.53
+    port: 6379
+    timeout: 5000
 #  jpa:
 #    show-sql: true
 #    hibernate:
@@ -51,3 +56,7 @@ whorl:
   app:
     swagger-base-package: com.whorl
     log-level: debug
+  security:
+    enabled: true
+    white-url-list:
+      - /api/user/login

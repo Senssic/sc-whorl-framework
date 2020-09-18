@@ -8,9 +8,14 @@ import com.sc.whorl.system.extend.webhandler.handler.RequestJsonHandlerMethodArg
 import com.sc.whorl.system.extend.webhandler.handler.SessionScopeMethodArgumentResolver;
 import com.sc.whorl.system.extend.webhandler.wapper.RequestBodyThreadLocalInterceptor;
 import com.sc.whorl.system.extend.webhandler.wapper.ResponseJsonAdvice;
+import com.sc.whorl.system.extend.xss.XssFilter;
 import com.sc.whorl.system.properties.ScAppProperties;
+import com.sc.whorl.system.utils.RedisObjectUtils;
+import com.sc.whorl.system.utils.RedisStrUtils;
+import com.sc.whorl.system.utils.SpringUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
@@ -20,6 +25,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -33,9 +40,6 @@ import javax.servlet.DispatcherType;
 import javax.validation.executable.ExecutableValidator;
 
 import lombok.extern.slf4j.Slf4j;
-
-import com.sc.whorl.system.extend.xss.XssFilter;
-import com.sc.whorl.system.utils.SpringUtil;
 
 
 @Slf4j
@@ -53,6 +57,13 @@ public class CommonWebAutoConfiguration implements WebMvcConfigurer {
 
     @Value("${spring.http.multipart.location:/}")
     private String multipartLocation;
+    @Autowired
+    @Qualifier("stringRedisTemplate")
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
 
     @Autowired
     private ScAppProperties scAppProperties;
@@ -67,6 +78,16 @@ public class CommonWebAutoConfiguration implements WebMvcConfigurer {
         registration.setOrder(Ordered.LOWEST_PRECEDENCE);
         registration.setEnabled(scAppProperties.getXssFilterEnable());
         return registration;
+    }
+
+    @Bean
+    public RedisStrUtils redisStrCache() {
+        return new RedisStrUtils(stringRedisTemplate);
+    }
+
+    @Bean
+    public RedisObjectUtils redisObjectCache() {
+        return new RedisObjectUtils(redisTemplate);
     }
 
     @Override
