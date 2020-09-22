@@ -54,7 +54,7 @@ public class SecurityWebAutoConfiguration implements WebMvcConfigurer {
         argumentResolvers.add(new TokenArgumentResolver());
     }
 
-    @Bean("wa")
+    @Bean("auth")
     public PermissionService permissionService() {
         return new PermissionService();
     }

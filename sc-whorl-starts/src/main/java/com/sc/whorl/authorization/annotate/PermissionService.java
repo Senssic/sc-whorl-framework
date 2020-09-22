@@ -15,8 +15,6 @@ import cn.hutool.core.util.StrUtil;
  */
 public class PermissionService {
 
-
-
     /**
      * 所有权限标识
      */

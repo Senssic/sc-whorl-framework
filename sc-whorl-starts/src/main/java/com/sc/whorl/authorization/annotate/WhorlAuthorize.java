@@ -17,11 +17,4 @@ public @interface WhorlAuthorize {
      * @return
      */
     String value();
-
-    /**
-     * 入参值权限和角色
-     *
-     * @return
-     */
-    AuthorizeEnum auth();
 }

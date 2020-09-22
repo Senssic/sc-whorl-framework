@@ -3,7 +3,6 @@ package com.whorl.web.controller;
 
 import com.google.common.collect.Sets;
 
-import com.sc.whorl.authorization.annotate.AuthorizeEnum;
 import com.sc.whorl.authorization.annotate.WhorlAuthorize;
 import com.sc.whorl.authorization.auth.EmbedUser;
 import com.sc.whorl.authorization.utils.SecureUtil;
@@ -35,7 +34,7 @@ public class UserController {
 
     @PostMapping("/all")
     @ApiOperation("all")
-    @WhorlAuthorize(value = "",auth = AuthorizeEnum.HAS_ANY_PERMI)
+    @WhorlAuthorize(value = "@auth.hasRole('ADMIN')")
     public RT<List<Users>> restPage(@RequestBody Users username) {
         return RT.success().setResult(userMapper.mySeleteAll());
     }
