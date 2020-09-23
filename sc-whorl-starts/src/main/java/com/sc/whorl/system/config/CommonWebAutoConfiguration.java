@@ -34,7 +34,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.DispatcherType;
 import javax.validation.executable.ExecutableValidator;
@@ -76,7 +78,9 @@ public class CommonWebAutoConfiguration implements WebMvcConfigurer {
         registration.addUrlPatterns("/*");
         registration.setName("xssFilter");
         registration.setOrder(Ordered.LOWEST_PRECEDENCE);
-        registration.setEnabled(scAppProperties.getXssFilterEnable());
+        Map<String, String> initParameters = new HashMap<String, String>();
+        initParameters.put("excludes", scAppProperties.getXssExcludesUrl());
+        registration.setInitParameters(initParameters);
         return registration;
     }
 

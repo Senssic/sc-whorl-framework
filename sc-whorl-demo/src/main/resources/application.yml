@@ -54,7 +54,6 @@ pagehelper:
   offsetAsPageNum: true
 whorl:
   app:
-    swagger-base-package: com.whorl
     log-level: info
   security:
     enabled: true

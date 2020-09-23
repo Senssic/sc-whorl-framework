@@ -1,9 +1,14 @@
 package com.sc.whorl.system.extend.xss;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -15,13 +20,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import cn.hutool.core.util.StrUtil;
 
-
+/**
+ * @author senssic
+ */
 public class XssFilter implements Filter {
+    public List<String> excludes = new ArrayList<>();
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-
-	}
+        String tempExcludes = config.getInitParameter("excludes");
+        if (StringUtils.isNotEmpty(tempExcludes)) {
+            String[] url = tempExcludes.split(",");
+            for (int i = 0; url != null && i < url.length; i++) {
+                excludes.add(url[i]);
+            }
+        }
+    }
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -33,7 +47,9 @@ public class XssFilter implements Filter {
             if (StrUtil.isNotBlank(requestHeader)) {
                 if (requestHeader.equalsIgnoreCase(MediaType.APPLICATION_JSON_VALUE)
                         || requestHeader.equalsIgnoreCase(MediaType.APPLICATION_JSON_UTF8_VALUE)) {
-                    requestWrapper = new XssHttpServletRequestWrapper((HttpServletRequest) request);
+                    if (!handleExcludeURL(httpServletRequest)) {
+                        requestWrapper = new XssHttpServletRequestWrapper((HttpServletRequest) request);
+                    }
                 }
             }
         }
@@ -48,5 +64,21 @@ public class XssFilter implements Filter {
 	public void destroy() {
 
 	}
+
+
+    private boolean handleExcludeURL(HttpServletRequest request) {
+        if (excludes == null || excludes.isEmpty()) {
+            return false;
+        }
+        String url = request.getServletPath();
+        for (String pattern : excludes) {
+            Pattern p = Pattern.compile("^" + pattern);
+            Matcher m = p.matcher(url);
+            if (m.find()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

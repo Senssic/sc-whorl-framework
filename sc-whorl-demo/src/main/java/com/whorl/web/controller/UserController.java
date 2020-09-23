@@ -33,7 +33,7 @@ public class UserController {
     private UserMapper userMapper;
 
     @PostMapping("/all")
-    @ApiOperation("all")
+    @ApiOperation("测试")
     @WhorlAuthorize(value = "@auth.hasRole('ADMIN')")
     public RT<List<Users>> restPage(@RequestBody Users username) {
         return RT.success().setResult(userMapper.mySeleteAll());
@@ -41,7 +41,7 @@ public class UserController {
 
 
     @GetMapping("/login")
-    @ApiOperation("login")
+    @ApiOperation("获取token")
     public RT<String> restPage() {
         EmbedUser embedUser = new EmbedUser();
         embedUser.setUserId(1001L);
